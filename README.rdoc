@@ -3,6 +3,10 @@
 The goal of this gem is to give Devise the ability to authorize users based if they are connected to Facebook or not.
 It relays on connection to Facebook set up via the Facebook JavaScript SDK.
 
+== Warning
+
+I guess a small warning is in it's place. Right now, this gem is kinda a prototype for me. Don't expect anything to
+work ;-) ..Even though committed code do work for me in my Rails 3 beta 3 application :-)
 
 
 
@@ -24,6 +28,12 @@ Rails.root/config/facebook.yml which should look something like this:
   development:
     <<: *production
 
+
+== Add Facebook SDK initializer HTML and JavaScript
+
+The next thing we'll be doing are adding Facebook's JavaScript SDK and initialize it. This should be added
+at the bottom of the page, before </body>. Add it with the helper facebook_init_javascript_sdk. I guess
+more options to this one will come later.
 
 
 
