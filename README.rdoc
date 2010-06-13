@@ -32,7 +32,7 @@ Rails.root/config/facebook.yml which should look something like this:
 == Add Facebook SDK initializer HTML and JavaScript
 
 The next thing we'll be doing are adding Facebook's JavaScript SDK and initialize it. This should be added
-at the bottom of the page, before </body>. Add it with the helper facebook_init_javascript_sdk. I guess
+at the bottom of the page, before </body>. Add it with the helper <tt>facebook_init_javascript_sdk</tt>. I guess
 more options to this one will come later.
 
 == Add facebook user id column to your users table
