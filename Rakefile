@@ -13,6 +13,7 @@ begin
     gem.email = "thhermansen@gmail.com"
     gem.homepage = "http://github.com/thhermansen/devise_facebook_open_graph"
     gem.authors = ["Thorbjørn Hermansen"]
+    gem.add_bundler_dependencies
   end
   Jeweler::GemcutterTasks.new
 end

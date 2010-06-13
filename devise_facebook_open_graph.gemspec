@@ -19,12 +19,22 @@ Gem::Specification.new do |s|
   s.files = [
     ".document",
      ".gitignore",
+     "Gemfile",
+     "Gemfile.lock",
      "LICENSE",
      "README.rdoc",
      "Rakefile",
      "VERSION",
      "devise_facebook_open_graph.gemspec",
+     "init.rb",
      "lib/devise_facebook_open_graph.rb",
+     "lib/devise_facebook_open_graph/facebook/config.rb",
+     "lib/devise_facebook_open_graph/model.rb",
+     "lib/devise_facebook_open_graph/rails.rb",
+     "lib/devise_facebook_open_graph/rails/controller_helpers.rb",
+     "lib/devise_facebook_open_graph/rails/view_helpers.rb",
+     "lib/devise_facebook_open_graph/schema.rb",
+     "lib/devise_facebook_open_graph/strategy.rb",
      "spec/spec.opts",
      "spec/spec_helper.rb"
   ]
@@ -42,24 +52,30 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<rails>, [">= 3.0.0.beta3"])
       s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_runtime_dependency(%q<devise>, [">= 1.1.rc1"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
+      s.add_runtime_dependency(%q<koala>, [">= 0.7.2"])
     else
+      s.add_dependency(%q<rails>, [">= 3.0.0.beta3"])
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<devise>, [">= 1.1.rc1"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
+      s.add_dependency(%q<koala>, [">= 0.7.2"])
     end
   else
+    s.add_dependency(%q<rails>, [">= 3.0.0.beta3"])
     s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<devise>, [">= 1.1.rc1"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
+    s.add_dependency(%q<koala>, [">= 0.7.2"])
   end
 end
 
