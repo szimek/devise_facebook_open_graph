@@ -35,6 +35,24 @@ The next thing we'll be doing are adding Facebook's JavaScript SDK and initializ
 at the bottom of the page, before </body>. Add it with the helper facebook_init_javascript_sdk. I guess
 more options to this one will come later.
 
+== Add facebook user id column to your users table
+
+  class CreateUsers < ActiveRecord::Migration
+    def self.up
+      create_table :users do |t|
+        # ...other definitions here..
+
+        t.facebook_open_graph_authenticatable
+      end
+
+      add_index :users, User.facebook_uid_field, :unique => true
+    end
+
+    
+    def self.down
+      drop_table :users
+    end
+  end
 
 
 == Note on Patches/Pull Requests

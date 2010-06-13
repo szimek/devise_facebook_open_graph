@@ -5,6 +5,7 @@ require 'devise_facebook_open_graph/facebook/config'
 require 'devise_facebook_open_graph/rails/view_helpers'
 
 require 'devise_facebook_open_graph/strategy'
+require 'devise_facebook_open_graph/schema'
 
 module Devise
   # 
