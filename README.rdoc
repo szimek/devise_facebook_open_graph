@@ -1,7 +1,8 @@
 = devise_facebook_open_graph
 
 The goal of this gem is to give Devise the ability to authorize users based if they are connected to Facebook or not.
-It relays on connection to Facebook set up via the Facebook JavaScript SDK.
+It relays on connection to Facebook set up via the Facebook JavaScript SDK. Maybe devise facebook js sdk connectable
+should be a better name for this gem ;-)
 
 == Warning
 
