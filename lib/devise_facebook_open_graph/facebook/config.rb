@@ -8,7 +8,7 @@ require "yaml"
 #
 module DeviseFacebookOpenGraph
   module Facebook
-    class DeviseFacebookOpenGraph::Facebook::Config
+    module Config
       class << self
 
         # 
@@ -29,6 +29,10 @@ module DeviseFacebookOpenGraph
         
         def sdk_java_script_source
           "http://connect.facebook.net/#{I18n.locale}/all.js"
+        end
+
+        def facebook_session_name
+          "fbs_#{application_id}"
         end
 
         private
