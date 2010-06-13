@@ -11,7 +11,7 @@ module Devise
         # current application's domain cookies.
         #
         def valid?
-          mapping.respond_to?(:authenticate_facebook_user) && cookies.has_key?(::DeviseFacebookOpenGraph::Facebook::Config.facebook_session_name)
+          mapping.to.respond_to?(:authenticate_facebook_user) && cookies.has_key?(::DeviseFacebookOpenGraph::Facebook::Config.facebook_session_name)
         end
 
         def authenticate!
