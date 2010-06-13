@@ -1,6 +1,31 @@
 = devise_facebook_open_graph
 
-Description goes here.
+The goal of this gem is to give Devise the ability to authorize users based if they are connected to Facebook or not.
+It relays on connection to Facebook set up via the Facebook JavaScript SDK.
+
+
+
+
+= How to get started
+
+== Get facebook credentials, add ids and keys to a configuration file
+
+If you haven't done so already, create a facebook application so you'll acquire an application id, secret and an API key.
+You can register applications here: http://www.facebook.com/developers/.
+
+DeviseFacebookOpenGraph provides a class for easy access to configuration values. These are by default read from
+Rails.root/config/facebook.yml which should look something like this:
+
+  production: &production
+    application_id: ""
+    api_key: ""
+    application_secret: ""
+    
+  development:
+    <<: *production
+
+
+
 
 == Note on Patches/Pull Requests
  

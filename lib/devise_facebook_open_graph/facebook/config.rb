@@ -8,6 +8,14 @@ require "yaml"
 #
 class DeviseFacebookOpenGraph::Facebook::Config
   class << self
+
+    # 
+    # Overrides the default configuration file path which is
+    # read from when requesting application_id, api_key,
+    # application_secret etc.
+    #
+    #
+    #
     attr_accessor :path
 
     %w(application_id api_key application_secret).each do |config_key|

@@ -13,7 +13,17 @@ begin
     gem.email = "thhermansen@gmail.com"
     gem.homepage = "http://github.com/thhermansen/devise_facebook_open_graph"
     gem.authors = ["Thorbjørn Hermansen"]
-    gem.add_bundler_dependencies
   end
   Jeweler::GemcutterTasks.new
+end
+
+
+require 'rake/rdoctask'
+Rake::RDocTask.new do |rdoc|
+  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+
+  rdoc.rdoc_dir = 'rdoc'
+  rdoc.title = "devise_facebook_open_graph #{version}"
+  rdoc.rdoc_files.include('README*')
+  rdoc.rdoc_files.include('lib/**/*.rb')
 end
