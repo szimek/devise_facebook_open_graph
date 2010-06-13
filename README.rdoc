@@ -5,8 +5,11 @@ It relays on connection to Facebook set up via the Facebook JavaScript SDK.
 
 == Warning
 
-I guess a small warning is in it's place. Right now, this gem is kinda a prototype for me. Don't expect anything to
-work ;-) ..Even though committed code do work for me in my Rails 3 beta 3 application :-)
+I guess I should start with a small warning: Right now, this gem is kinda a fast-written prototype for me. Don't expect anything to
+work ;-) ..Even though committed code do work for me in my Rails 3 beta 3 application :-) I have managed to authenticate users which
+sign in via Facebook's JavaScript SDK and I guess this code might be useful to others too. Sadly, I haven't written any specs while
+writing this code. This is not 100% complete code either. For instance, creating users based on facebook connection is not finished,
+although I guess it will be soon.
 
 
 
@@ -71,6 +74,10 @@ the user's facebook uid and look that up in your users' table. If found, the use
 Facebook connected users are signed out when they sign out of Facebook. You can log a user out by calling <tt>FB.logout()</tt>
 from your JavaScript.
 
+
+= TODO
+* Add/provide hooks in devise models which are called when user's are created based on a facebook account. Yield access to user's open graph API to allow extraction of data.
+* Guess some testing should be nice ;-) 
 
 
 == Note on Patches/Pull Requests
