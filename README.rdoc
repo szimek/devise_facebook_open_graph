@@ -73,7 +73,28 @@ the user's facebook uid and look that up in your users' table. If found, the use
 == How to sign out users?
 
 Facebook connected users are signed out when they sign out of Facebook. You can log a user out by calling <tt>FB.logout()</tt>
-from your JavaScript.
+from your JavaScript. Here are some lines of JavaScript (jQuery) which I use to sign in/out users. Hope it helps you out if you are stuck:
+
+  $("a#sign_out").click(function(e) {
+      var sign_out_link = $(this);
+
+      FB.getLoginStatus(function(response) {
+          if (response.session) { // User is connected to Facebook
+              e.preventDefault();
+
+              FB.logout(function() { // Signs the user out and redirect to the application's sign out url
+                  window.location.href = sign_out_link.attr("href");
+              });
+          }
+      });
+  });
+
+  FB.Event.subscribe('auth.login', function(response) {
+      window.location.href = "/profile"; // Redirect to some url when the user gets connected to facebook
+  });
+
+For more information take a look at http://developers.facebook.com/docs/reference/javascript/FB.getLoginStatus
+Oh! ..and you might want to start here: http://developers.facebook.com/docs/reference/javascript/
 
 
 = TODO
