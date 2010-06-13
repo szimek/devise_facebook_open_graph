@@ -1,8 +1,25 @@
 # encoding: utf-8
 require 'devise'
 
-require 'devise_facebook_open_graph/facebook/config'
-require 'devise_facebook_open_graph/rails/view_helpers'
+
+require 'devise_facebook_open_graph/rails'
+
+module DeviseFacebookOpenGraph
+  module Facebook
+    extend ActiveSupport::Autoload
+
+    autoload :Config
+  end
+
+  module Rails
+    extend ActiveSupport::Autoload
+
+    autoload :ViewHelpers
+    autoload :ControllerHelpers
+  end
+end
+
+
 
 require 'devise_facebook_open_graph/strategy'
 require 'devise_facebook_open_graph/schema'

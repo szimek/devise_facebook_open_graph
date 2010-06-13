@@ -35,5 +35,3 @@ module DeviseFacebookOpenGraph
     end
   end
 end
-
-::ActionView::Base.send :include, DeviseFacebookOpenGraph::Rails::ViewHelpers
