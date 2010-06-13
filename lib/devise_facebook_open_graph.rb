@@ -9,6 +9,7 @@ module DeviseFacebookOpenGraph
     extend ActiveSupport::Autoload
 
     autoload :Config
+    autoload :Session
   end
 
   module Rails

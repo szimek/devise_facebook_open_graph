@@ -15,7 +15,18 @@ module Devise
         end
 
         def authenticate!
-          # TODO
+          session = DeviseFacebookOpenGraph::Facebook::Session.new(cookies)
+
+          if session.valid?
+            klass = mapping.to 
+            user = klass.authenticate_facebook_user session.uid
+
+            if user.present?
+              success! user
+            else
+              # TODO Check if we are to auto-create user, and if so do that.
+            end
+          end
         end
       end
     end

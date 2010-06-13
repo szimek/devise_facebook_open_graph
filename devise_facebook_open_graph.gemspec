@@ -56,26 +56,29 @@ Gem::Specification.new do |s|
       s.add_development_dependency(%q<rake>, [">= 0"])
       s.add_development_dependency(%q<rspec>, [">= 0"])
       s.add_runtime_dependency(%q<devise>, [">= 1.1.rc1"])
+      s.add_runtime_dependency(%q<json>, [">= 0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<bundler>, [">= 0"])
-      s.add_runtime_dependency(%q<koala>, [">= 0.7.2"])
+      s.add_runtime_dependency(%q<koala>, [">= 0"])
     else
       s.add_dependency(%q<rails>, [">= 3.0.0.beta3"])
       s.add_dependency(%q<rake>, [">= 0"])
       s.add_dependency(%q<rspec>, [">= 0"])
       s.add_dependency(%q<devise>, [">= 1.1.rc1"])
+      s.add_dependency(%q<json>, [">= 0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<bundler>, [">= 0"])
-      s.add_dependency(%q<koala>, [">= 0.7.2"])
+      s.add_dependency(%q<koala>, [">= 0"])
     end
   else
     s.add_dependency(%q<rails>, [">= 3.0.0.beta3"])
     s.add_dependency(%q<rake>, [">= 0"])
     s.add_dependency(%q<rspec>, [">= 0"])
     s.add_dependency(%q<devise>, [">= 1.1.rc1"])
+    s.add_dependency(%q<json>, [">= 0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<bundler>, [">= 0"])
-    s.add_dependency(%q<koala>, [">= 0.7.2"])
+    s.add_dependency(%q<koala>, [">= 0"])
   end
 end
 

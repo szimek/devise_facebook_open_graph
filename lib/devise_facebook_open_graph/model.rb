@@ -14,7 +14,7 @@ module Devise
         end
 
         def authenticate_facebook_user(facebook_uid)
-          self.class.send "find_by_" + facebook_uid_field, facebook_uid
+          send("find_by_" + facebook_uid_field.to_s, facebook_uid)
         end
       end
     end
