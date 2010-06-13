@@ -29,6 +29,7 @@ Gem::Specification.new do |s|
      "init.rb",
      "lib/devise_facebook_open_graph.rb",
      "lib/devise_facebook_open_graph/facebook/config.rb",
+     "lib/devise_facebook_open_graph/facebook/session.rb",
      "lib/devise_facebook_open_graph/model.rb",
      "lib/devise_facebook_open_graph/rails.rb",
      "lib/devise_facebook_open_graph/rails/controller_helpers.rb",

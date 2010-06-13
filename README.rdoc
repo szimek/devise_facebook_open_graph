@@ -29,12 +29,6 @@ Rails.root/config/facebook.yml which should look something like this:
     <<: *production
 
 
-== Add Facebook SDK initializer HTML and JavaScript
-
-The next thing we'll be doing are adding Facebook's JavaScript SDK and initialize it. This should be added
-at the bottom of the page, before </body>. Add it with the helper <tt>facebook_init_javascript_sdk</tt>. I guess
-more options to this one will come later.
-
 == Add facebook user id column to your users table
 
   class CreateUsers < ActiveRecord::Migration
@@ -53,6 +47,30 @@ more options to this one will come later.
       drop_table :users
     end
   end
+
+
+== Add Facebook SDK initializer HTML and JavaScript
+
+The next thing we'll be doing are adding Facebook's JavaScript SDK and initialize it. This should be added
+at the bottom of the page, before </body>. Add it with the helper <tt>facebook_init_javascript_sdk</tt>. I guess
+more options to this one will come later.
+
+== Add Facebook login button to your page
+
+This can be done in different ways. One way is to use the fbml tag <tt>fb:login-button</tt>. See
+http://developers.facebook.com/docs/authentication/, single sign-on section for more information.
+
+== Last step...
+
+Once a user has clicked your login button a cookie will be set with name fbs_<your_application_id>. When this is
+set and Warden tries the authentication strategy which this gem provides it will parse the cookie content, find
+the user's facebook uid and look that up in your users' table. If found, the user is authenticated.
+
+== How to sign out users?
+
+Facebook connected users are signed out when they sign out of Facebook. You can log a user out by calling <tt>FB.logout()</tt>
+from your JavaScript.
+
 
 
 == Note on Patches/Pull Requests
