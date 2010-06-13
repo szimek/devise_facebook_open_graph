@@ -6,11 +6,16 @@ module Devise
   module FacebookOpenGraphAuthenticatable
     module Strategies
       class FacebookOpenGraphAuthenticatable < ::Devise::Strategies::Base
+        #
+        # This strategy is valid if Facebook has set it's session data object in
+        # current application's domain cookies.
+        #
         def valid?
-          false
+          mapping.respond_to?(:authenticate_facebook_user) && cookies.has_key?(::DeviseFacebookOpenGraph::Facebook::Config.facebook_session_name)
         end
 
         def authenticate!
+          # TODO
         end
       end
     end
