@@ -20,14 +20,6 @@ module DeviseFacebookOpenGraph
             cookie: true,
             xfbml: true
           });
-
-          FB.Event.subscribe('auth.sessionChange', function(response) {
-            if (response.session) {
-              alert("Logged in via FB!");
-            } else {
-              alert("Logged out via FB!");
-            }
-          });
         JAVASCRIPT
 
         buffer.html_safe
