@@ -22,10 +22,18 @@ module Devise
             user = klass.authenticate_facebook_user session.uid
             
             if user.blank?
-              # TODO
+              if klass.facebook_auto_create_account?
+                user = klass.new.tap do |user|
+                  user.facebook_session = session
+                  user.set_facebook_credentials_from_session!
+                  user.run_callbacks :initialize_by_facebook
+                end
+                
+                # TODO SAVE and fix invalid state on object if it has no email and that is a required field..
+              end
             end
 
-            if user.present?
+            if user.present? && user.persisted?
               user.facebook_session = session
               user.run_callbacks :connecting_to_facebook do
                 success! user
