@@ -32,6 +32,9 @@ Rails.root/config/facebook.yml which should look something like this:
   development:
     <<: *production
 
+== Configure your model to use facebook_open_graph_authenticatable
+  class User < ActiveRecord::Base
+    devise :database_authenticatable, :facebook_open_graph_authenticatable # etc..
 
 == Add facebook user id column to your users table
 
@@ -97,8 +100,20 @@ For more information take a look at http://developers.facebook.com/docs/referenc
 Oh! ..and you might want to start here: http://developers.facebook.com/docs/reference/javascript/
 
 
+== Callbacks
+
+There are defined some callback methods for devise models which are set up to be facebook_open_graph_authenticatable.
+When these methods are called the model should have access to the facebook session through self.
+Just make a call to facebook_session on your model. With this session you have access to uid, open graph api on behalf of the user
+etc. Take a look at DeviseFacebookOpenGraph::Facebook::Session and the Koala gem which we use for communicating with the open graph.
+
+=== before/after/around connecting_to_facebook
+These are called when Devise authenticates the user via facebook connect. In effect the user will be connected to facebook
+at this point; signing out of facebook means signing out of your application too and visa-versa. As you might expect from a 
+before filter; you can halt the connection to facebook in the before filter by making it return false.
+
+
 = TODO
-* Add/provide hooks in devise models which are called when user's are created based on a facebook account. Yield access to user's open graph API to allow extraction of data.
 * Add other controller helpers for easy access to users facebook session (more specifically access to user's session & open graph).
 * Add support for non-JavaScript authentication (see http://developers.facebook.com/docs/authentication/ "Authenticating Users in a Web Application").
 * I'm sure there are more things to do..

@@ -6,6 +6,12 @@ module Devise
     module FacebookOpenGraphAuthenticatable
       extend ActiveSupport::Concern
 
+      included do
+        attr_accessor :facebook_session
+        define_model_callbacks :connecting_to_facebook
+      end
+
+
       module ClassMethods
         Devise::Models.config(self, :facebook_uid_field, :facebook_auto_create_account)
 

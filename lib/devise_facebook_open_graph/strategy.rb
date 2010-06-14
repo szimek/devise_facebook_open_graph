@@ -20,11 +20,16 @@ module Devise
           if session.valid?
             klass = mapping.to 
             user = klass.authenticate_facebook_user session.uid
+            
+            if user.blank?
+              # TODO
+            end
 
             if user.present?
-              success! user
-            else
-              # TODO Check if we are to auto-create user, and if so do that.
+              user.facebook_session = session
+              user.run_callbacks :connecting_to_facebook do
+                success! user
+              end
             end
           end
         end
