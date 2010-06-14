@@ -28,7 +28,7 @@ module DeviseFacebookOpenGraph
       #
       # Gives access to query as user with an oauth access token fetched from the cookie content
       #
-      def graph_api
+      def graph
         Koala::Facebook::GraphAPI.new(access_token)
       end
 

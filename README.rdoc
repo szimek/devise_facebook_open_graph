@@ -114,6 +114,18 @@ Note that this is only relevant if devise's configuration value facebook_auto_cr
 the user is as a default saved without running validations meaning that you should implement a before_create_by_facebook function and extract
 what you can like email etc from the facebook_session. You can override this though via configuration key 'run_validations_when_creating_facebook_user'.
 
+==== Simple example on how to extract user's data from Facebook
+  class User < ActiveRecord::Base
+    before_create_by_facebook :extract_user_data_from_facebook_session
+    
+    def extract_user_data_from_facebook_session
+      # The following code returns hash with information about current user being created
+      # For more information, see Koala gem documentation http://wiki.github.com/arsduo/koala/graph-api
+      user_data_from_facebook = facebook_session.graph.get_object(:me)
+      # Assign attributes with fetched data..
+    end
+  end
+
 === before/after/around connecting_to_facebook
 
 These are called when Devise authenticates the user via facebook connect. In effect the user will be connected to facebook
