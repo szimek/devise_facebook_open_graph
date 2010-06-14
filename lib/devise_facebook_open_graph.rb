@@ -38,6 +38,18 @@ module Devise
   #
   mattr_accessor :facebook_auto_create_account
   @@facebook_auto_create_account = true
+
+  #
+  # Runs validation when auto creating users on facebook connect
+  #
+  mattr_accessor :run_validations_when_creating_facebook_user
+  @@run_validations_when_creating_facebook_user = false
+
+  #
+  # Skip confirmation loop on facebook connection users
+  #
+  mattr_accessor :skip_confimation_for_facebook_users
+  @@skip_confimation_for_facebook_users = true
 end
 
 Devise.add_module(:facebook_open_graph_authenticatable,

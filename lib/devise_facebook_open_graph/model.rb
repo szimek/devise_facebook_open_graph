@@ -8,12 +8,15 @@ module Devise
 
       included do
         attr_accessor :facebook_session
+        define_model_callbacks :create_by_facebook
         define_model_callbacks :connecting_to_facebook
-        define_model_callbacks :initialize_by_facebook, :only => :after
       end
 
       module ClassMethods
-        Devise::Models.config(self, :facebook_uid_field, :facebook_auto_create_account)
+        Devise::Models.config(self,
+          :facebook_uid_field, :facebook_auto_create_account, :run_validations_when_creating_facebook_user,
+          :skip_confimation_for_facebook_users
+        )
 
         def facebook_auto_create_account?
           !!facebook_auto_create_account
@@ -39,6 +42,8 @@ module Devise
           # These database fields are required if authenticable is used
           write_attribute(:password_salt, '') if self.respond_to?(:password_salt)
           write_attribute(:encrypted_password, '') if self.respond_to?(:encrypted_password)
+          
+          skip_confirmation! if self.class.skip_confimation_for_facebook_users && respond_to?(:skip_confirmation!)
         end
     end
   end

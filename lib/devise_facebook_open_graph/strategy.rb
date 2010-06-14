@@ -14,6 +14,12 @@ module Devise
           mapping.to.respond_to?(:authenticate_facebook_user) && cookies.has_key?(::DeviseFacebookOpenGraph::Facebook::Config.facebook_session_name)
         end
 
+        #
+        # Authenticates the user as if this requests seems
+        # valid as FacebookOpenGraphAuthenticatable
+        #
+        # Tries to auto create the user if configured to do so.
+        #
         def authenticate!
           session = DeviseFacebookOpenGraph::Facebook::Session.new(cookies)
 
@@ -21,15 +27,16 @@ module Devise
             klass = mapping.to 
             user = klass.authenticate_facebook_user session.uid
             
-            if user.blank?
-              if klass.facebook_auto_create_account?
-                user = klass.new.tap do |user|
-                  user.facebook_session = session
-                  user.set_facebook_credentials_from_session!
-                  user.run_callbacks :initialize_by_facebook
-                end
-                
-                # TODO SAVE and fix invalid state on object if it has no email and that is a required field..
+            if user.blank? && klass.facebook_auto_create_account?
+              user = klass.new
+              user.facebook_session = session
+              user.run_callbacks :create_by_facebook do
+                user.set_facebook_credentials_from_session!
+                user.save(klass.run_validations_when_creating_facebook_user)
+              end
+
+              if klass.run_validations_when_creating_facebook_user && !user.persisted?
+                fail! :invalid_facebook_user_on_creation
               end
             end
 
@@ -38,7 +45,11 @@ module Devise
               user.run_callbacks :connecting_to_facebook do
                 success! user
               end
+            else
+              fail! :facebook_user_not_found_locally
             end
+          else
+            fail! :invalid_facebook_session
           end
         end
       end

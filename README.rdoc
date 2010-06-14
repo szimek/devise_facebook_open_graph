@@ -107,7 +107,15 @@ When these methods are called the model should have access to the facebook sessi
 Just make a call to facebook_session on your model. With this session you have access to uid, open graph api on behalf of the user
 etc. Take a look at DeviseFacebookOpenGraph::Facebook::Session and the Koala gem which we use for communicating with the open graph.
 
+=== before/after/around create_by_facebook
+
+This one is called when a new user is created based on facebook connection, but the facebook uid is now found in the database.
+Note that this is only relevant if devise's configuration value facebook_auto_create_account is set to true. Oh, one more thing,
+the user is as a default saved without running validations meaning that you should implement a before_create_by_facebook function and extract
+what you can like email etc from the facebook_session. You can override this though via configuration key 'run_validations_when_creating_facebook_user'.
+
 === before/after/around connecting_to_facebook
+
 These are called when Devise authenticates the user via facebook connect. In effect the user will be connected to facebook
 at this point; signing out of facebook means signing out of your application too and visa-versa. As you might expect from a 
 before filter; you can halt the connection to facebook in the before filter by making it return false.
