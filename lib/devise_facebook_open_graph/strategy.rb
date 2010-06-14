@@ -33,7 +33,7 @@ module Devise
               user.run_callbacks :create_by_facebook do
                 user.set_facebook_credentials_from_session!
                 begin
-                  user.save(klass.run_validations_when_creating_facebook_user)
+                  user.save(:validate => klass.run_validations_when_creating_facebook_user)
                 rescue ActiveRecord::RecordNotUnique
                   fail! :not_unique_user_on_creation
                 end
