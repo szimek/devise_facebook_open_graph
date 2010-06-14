@@ -99,7 +99,10 @@ Oh! ..and you might want to start here: http://developers.facebook.com/docs/refe
 
 = TODO
 * Add/provide hooks in devise models which are called when user's are created based on a facebook account. Yield access to user's open graph API to allow extraction of data.
-* Guess some testing should be nice ;-) 
+* Add other controller helpers for easy access to users facebook session (more specifically access to user's session & open graph).
+* Add support for non-JavaScript authentication (see http://developers.facebook.com/docs/authentication/ "Authenticating Users in a Web Application").
+* I'm sure there are more things to do..
+* ..For instance; I guess some testing should be nice :-]
 
 
 == Note on Patches/Pull Requests
