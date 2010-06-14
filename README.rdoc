@@ -120,6 +120,22 @@ These are called when Devise authenticates the user via facebook connect. In eff
 at this point; signing out of facebook means signing out of your application too and visa-versa. As you might expect from a 
 before filter; you can halt the connection to facebook in the before filter by making it return false.
 
+== Configuration
+
+There are some configuration options which you can add in config/initializers/devise.rb
+
+  # Overrides the default column name for where to store the user's facebook user id
+  #config.facebook_uid_field = "facebook_uid"
+
+  # Auto creates accounts for new users. Default is true
+  #config.facebook_auto_create_account = true
+
+  # Runs validation when auto creating users on facebook connect. Default is false
+  #config.run_validations_when_creating_facebook_user = false
+
+  # Skip confirmation loop on facebook connection users. Default is true
+  #config,skip_confimation_for_facebook_users = true
+
 
 = TODO
 * Add other controller helpers for easy access to users facebook session (more specifically access to user's session & open graph).
