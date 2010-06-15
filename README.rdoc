@@ -149,6 +149,14 @@ There are some configuration options which you can add in config/initializers/de
   #config,skip_confimation_for_facebook_users = true
 
 
+== Access facebook session through controllers and views
+
+When a user is signed in via facebook connect you have access to the user's facebook session by calling <tt>facebook_session</tt>
+inside a controller or view. With this session you have access to the user's open graph by calling <tt>facebook_session.graph</tt>.
+See the simple example on how to extract user's data from Facebook above.
+
+
+
 = TODO
 * Add other controller helpers for easy access to users facebook session (more specifically access to user's session & open graph).
 * Add support for non-JavaScript authentication (see http://developers.facebook.com/docs/authentication/ "Authenticating Users in a Web Application").
