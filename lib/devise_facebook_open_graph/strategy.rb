@@ -30,30 +30,30 @@ module Devise
             if user.blank? && klass.facebook_auto_create_account?
               user = klass.new
               user.facebook_session = session
+              user.set_facebook_credentials_from_session!
               user.run_callbacks :create_by_facebook do
-                user.set_facebook_credentials_from_session!
                 begin
                   user.save(:validate => klass.run_validations_when_creating_facebook_user)
                 rescue ActiveRecord::RecordNotUnique
-                  fail! :not_unique_user_on_creation
+                  fail!(:not_unique_user_on_creation) and return
                 end
               end
 
               if klass.run_validations_when_creating_facebook_user && !user.persisted?
-                fail! :invalid_facebook_user_on_creation
+                fail!(:invalid_facebook_user_on_creation) and return
               end
             end
 
             if user.present? && user.persisted?
               user.facebook_session = session
               user.run_callbacks :connecting_to_facebook do
-                success! user
+                success!(user) and return
               end
             else
-              fail! :facebook_user_not_found_locally
+              fail!(:facebook_user_not_found_locally) and return
             end
           else
-            fail! :invalid_facebook_session
+            fail!(:invalid_facebook_session) and return
           end
         end
       end
