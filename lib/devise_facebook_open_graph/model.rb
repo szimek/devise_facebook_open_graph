@@ -33,6 +33,10 @@ module Devise
         make_facebook_model_valid!
       end
 
+      def authenticated_via_facebook?
+        read_attribute(self.class.facebook_uid_field).present?
+      end
+
       private
         #
         # In case of model having included other modules like
