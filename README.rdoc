@@ -157,7 +157,8 @@ There are some configuration options which you can add in config/initializers/de
 
 When a user is signed in via facebook connect you have access to the user's facebook session by calling <tt>facebook_session</tt>
 inside a controller or view. With this session you have access to the user's open graph by calling <tt>facebook_session.graph</tt>.
-See the simple example on how to extract user's data from Facebook above.
+See the simple example on how to extract user's data from Facebook above. <tt>facebook_session</tt> will return nil if we where unable
+to parse the cookie set by Facebook's JavaScript SDK or if it hasn't been set at all.
 
 
 

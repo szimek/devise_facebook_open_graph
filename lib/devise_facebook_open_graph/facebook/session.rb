@@ -11,6 +11,11 @@ module DeviseFacebookOpenGraph
       #
       FACEBOOK_SESSION_KEYS = %w(session_key expires uid sig secret access_token)
 
+      def self.new_or_nil_if_invalid(cookies)
+        session = new(cookies)
+        return session if session.valid?
+      end
+
       #
       # Creates a new Facebook session based cookies hash from a request
       #

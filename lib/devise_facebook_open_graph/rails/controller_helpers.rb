@@ -10,7 +10,7 @@ module DeviseFacebookOpenGraph
       end
 
       def facebook_session
-        @facebook_session ||= DeviseFacebookOpenGraph::Facebook::Session.new(cookies)
+        @facebook_session ||= DeviseFacebookOpenGraph::Facebook::Session.new_or_nil_if_invalid(cookies)
       end
     end
   end
