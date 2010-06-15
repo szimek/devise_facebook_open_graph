@@ -16,6 +16,10 @@ although I guess it will be soon.
 
 = How to get started
 
+== Set up gem dependency in your Gemfile
+
+gem 'devise_facebook_open_graph'
+
 == Get facebook credentials, add ids and keys to a configuration file
 
 If you haven't done so already, create a facebook application so you'll acquire an application id, secret and an API key.
