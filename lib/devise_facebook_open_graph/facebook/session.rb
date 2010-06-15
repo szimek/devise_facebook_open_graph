@@ -52,7 +52,7 @@ module DeviseFacebookOpenGraph
       private
         def parse_cookie # :nodoc:
           oauth = Koala::Facebook::OAuth.new(Config.application_id, Config.application_secret)
-          parsed = oauth.get_user_from_cookie(@cookies)
+          oauth.get_user_from_cookie(@cookies)
         end
     end
   end
