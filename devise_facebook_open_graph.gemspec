@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{devise_facebook_open_graph}
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Thorbj\303\270rn Hermansen"]
-  s.date = %q{2010-06-15}
+  s.date = %q{2010-06-16}
   s.description = %q{Extends Devise with an authentication strategy against Facebook's Open Graph and it's JavaScrip SDK}
   s.email = %q{thhermansen@gmail.com}
   s.extra_rdoc_files = [
