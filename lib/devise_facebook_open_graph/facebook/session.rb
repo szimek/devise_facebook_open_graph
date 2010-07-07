@@ -57,7 +57,13 @@ module DeviseFacebookOpenGraph
       private
         def parse_cookie # :nodoc:
           oauth = Koala::Facebook::OAuth.new(Config.application_id, Config.application_secret)
-          oauth.get_user_from_cookie(@cookies)
+          user_information_hash = oauth.get_user_info_from_cookie(@cookies)
+          
+          if user_information_hash.present? && !user_information_hash.is_a?(Hash)
+            raise "Expected get_user_info_from_cookie to return a Hash. Got #{user_information_hash.class}"
+          end
+
+          user_information_hash
         end
     end
   end
