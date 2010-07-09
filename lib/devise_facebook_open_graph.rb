@@ -1,38 +1,30 @@
 # encoding: utf-8
 require 'devise'
 
-
-require 'devise_facebook_open_graph/rails'
-
 module DeviseFacebookOpenGraph
   module Facebook
-    extend ActiveSupport::Autoload
-
-    autoload :Config
-    autoload :Session
+    autoload :Config, "devise_facebook_open_graph/facebook/config"
+    autoload :Session, "devise_facebook_open_graph/facebook/session"
   end
 
   module Rails
-    extend ActiveSupport::Autoload
-
-    autoload :ViewHelpers
-    autoload :ControllerHelpers
+    autoload :ViewHelpers, "devise_facebook_open_graph/rails/view_helpers"
+    autoload :ControllerHelpers, "devise_facebook_open_graph/rails/controller_helpers"
   end
 end
 
-
-
+require 'devise_facebook_open_graph/rails'
 require 'devise_facebook_open_graph/strategy'
 require 'devise_facebook_open_graph/schema'
 
 module Devise
-  # 
+  #
   # Specifies database column name to store the facebook user id.
   #
   mattr_accessor :facebook_uid_field
   @@facebook_uid_field = :facebook_uid
 
-  # 
+  #
   # Instructs this gem to auto create an account for facebook
   # users which have not visited before
   #

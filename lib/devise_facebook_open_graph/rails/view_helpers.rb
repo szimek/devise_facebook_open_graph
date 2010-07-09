@@ -22,7 +22,7 @@ module DeviseFacebookOpenGraph
           });
         JAVASCRIPT
 
-        buffer.html_safe
+        buffer
       end
     end
   end

@@ -1,8 +1,8 @@
-gem 'rails', '>= 3.0.0.beta3'
-gem 'devise', '>= 1.1.rc1'
+source "http://rubygems.org"
+
+gem 'devise', '~> 1.0'
 gem 'koala', '>= 0.8.0'
 gem 'json' # Koala needs this, but it has no gem spec which dictates this on it's own as it seems
-
 
 group :development do
   gem 'bundler'

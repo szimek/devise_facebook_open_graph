@@ -8,8 +8,12 @@ module Devise
 
       included do
         attr_accessor :facebook_session
-        define_model_callbacks :create_by_facebook
-        define_model_callbacks :connecting_to_facebook
+
+        # Callbacks
+        def before_create_by_facebook; end
+        def after_create_by_facebook; end
+        def before_connecting_to_facebook; end
+        def after_connecting_to_facebook; end
       end
 
       module ClassMethods
@@ -46,7 +50,7 @@ module Devise
           # These database fields are required if authenticable is used
           write_attribute(:password_salt, '') if self.respond_to?(:password_salt)
           write_attribute(:encrypted_password, '') if self.respond_to?(:encrypted_password)
-          
+
           skip_confirmation! if self.class.skip_confimation_for_facebook_users && respond_to?(:skip_confirmation!)
         end
     end
