@@ -8,12 +8,6 @@ module Devise
 
       included do
         attr_accessor :facebook_session
-
-        # Callbacks
-        def before_create_by_facebook; end
-        def after_create_by_facebook; end
-        def before_connecting_to_facebook; end
-        def after_connecting_to_facebook; end
       end
 
       module ClassMethods

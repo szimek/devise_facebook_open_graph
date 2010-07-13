@@ -33,9 +33,9 @@ module Devise
               user.set_facebook_credentials_from_session!
 
               begin
-                user.before_create_by_facebook
+                user.before_create_by_facebook if user.respond_to?(:before_create_by_facebook)
                 user.save(klass.run_validations_when_creating_facebook_user)
-                user.after_create_by_facebook
+                user.after_create_by_facebook if user.respond_to?(:after_create_by_facebook)
               rescue ActiveRecord::RecordNotUnique
                 fail!(:not_unique_user_on_creation) and return
               end
@@ -47,9 +47,9 @@ module Devise
 
             if user.present? && user.persisted?
               user.facebook_session = session
-              user.before_connecting_to_facebook
+              user.before_connecting_to_facebook if user.respond_to?(:before_connecting_to_facebook)
               success!(user)
-              user.after_connecting_to_facebook
+              user.after_connecting_to_facebook if user.respond_to?(:after_connecting_to_facebook)
             else
               fail!(:facebook_user_not_found_locally) and return
             end
